@@ -1,19 +1,24 @@
+// Definición del estado inicial de la calculadora
 export const initialState = {
-    currentValue: "0",
-    operator: null,
-    previousValue: null,
+    currentValue: "0",  // Valor actual en la pantalla de la calculadora
+    operator: null,          // Operador seleccionado
+    previousValue: null,     // Valor anterior
   };
   
+
+  // Función para manejar la entrada de números
   export const handleNumber = (value, state) => {
     if (state.currentValue === "0") {
+      // Si el valor actual es "0", lo reemplazamos con el nuevo número
       return { currentValue: `${value}` };
     }
-  
+  // Si hay un valor actual, concatenamos el nuevo número
     return {
       currentValue: `${state.currentValue}${value}`,
     };
   };
   
+  // Función para realizar cálculos cuando se presiona el botón de igual
   const handleEqual = (state) => {
     const { currentValue, previousValue, operator } = state;
   
@@ -48,7 +53,7 @@ export const initialState = {
     }
   };
   
-  // calculator function
+  // Función principal de la calculadora que maneja diferentes tipos de acciones
   const calculator = (type, value, state) => {
     switch (type) {
       case "number":

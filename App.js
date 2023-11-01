@@ -1,29 +1,30 @@
-import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import Button from "./components/Button";
-import Row from "./components/Row";
-import calculator, { initialState } from "./util/calculator";
+import React, { Component } from "react"; // Importa React y Component desde la biblioteca "react."
+import { SafeAreaView, StyleSheet, Text, View } from "react-native"; // Importa componentes y estilos de "react-native."
+import Button from "./components/Button";  // Importa el componente "Button" desde un archivo personalizado.
+import Row from "./components/Row";  // Importa el componente "Row" desde un archivo personalizado.
+import calculator, { initialState } from "./util/calculator";  // Importa funciones y objetos desde "calculator."
 
 // create class component of App
-export default class App extends Component {
-  state = initialState;
+export default class App extends Component { // Define una clase de componente llamada "App."
+  state = initialState;  // Inicializa el estado del componente con el objeto "initialState."
 
   // handle tap method
-  HandleTap = (type, value) => {
-    this.setState((state) => calculator(type, value, state));
+  HandleTap = (type, value) => { // Declara un método llamado "HandleTap" para manejar las acciones del usuario.
+    this.setState((state) => calculator(type, value, state)); // Actualiza el estado del componente utilizando la función "calculator."
   };
 
   // render method
-  render() {
-    return (
-      <View style={styles.container}>
-        {/* Status bae here */}
+  render() { // Inicia el método "render" para definir la interfaz de usuario de la aplicación.
+    return ( // Comienza la declaración del JSX para la estructura de la interfaz de usuario.
+       // Crea un componente "View" con un estilo definido por "styles.container."
+       <View style={styles.container}>
+        {/*// Envuelve el contenido con un componente "SafeAreaView" para proporcionar una zona segura en dispositivos móviles.*/}
         <SafeAreaView>
-          <Text style={styles.value}>
-            {parseFloat(this.state.currentValue).toLocaleString()}
+          <Text style={styles.value}> {/*// Crea un componente "Text" con un estilo definido por "styles.value" para mostrar el valor actual.*/}
+            {parseFloat(this.state.currentValue).toLocaleString()} {/*// Muestra el valor actual en un formato legible para el usuario.*/}
           </Text>
 
-          {/* Do create componentRow */}
+      {/* Define filas de botones y botones con sus respectivas funciones "onPress." */}
           <Row>
             <Button
               text="C"
@@ -100,13 +101,13 @@ export default class App extends Component {
 }
 
 // create styles of app
-const styles = StyleSheet.create({
-  container: {
+const styles = StyleSheet.create({  // Define un objeto de estilos.
+  container: {  // Define un estilo llamado "container."
     flex: 1,
     backgroundColor: "#202020",
     justifyContent: "flex-end",
   },
-  value: {
+  value: { // Define un estilo llamado "value."
     color: "#fff",
     fontSize: 42,
     textAlign: "right",
